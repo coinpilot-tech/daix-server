@@ -1,0 +1,29 @@
+{
+    "name": "daix-server",
+    "version": "0.0.1",
+    "description": "the server for daix, coinpilot tech's cryptocurrency-powered gaming storefront.",
+    "main": "index.js",
+    "scripts": {
+        "test": "nodemon ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/coinpilot-tech/daix-server.git"
+    },
+    "author": "coinpilot-tech",
+    "license": "AGPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/coinpilot-tech/daix-server/issues"
+    },
+    "homepage": "https://github.com/coinpilot-tech/daix-server#readme",
+    "dependencies": {
+        "@hashgraph/sdk": "^2.7.0-beta.3",
+        "body-parser": "^1.19.1",
+        "express": "^4.17.2",
+        "express-rate-limit": "^6.2.1",
+        "mongoose": "^6.1.5"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}
