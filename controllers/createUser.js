@@ -80,6 +80,15 @@ const createUser = async (req, res, client) => {
             });
             return;
         }
+        // ensure the salts are different
+        if (req.body.primaryScryptSalt === req.body.secondaryScryptSalt) {
+            res.status(500).json({
+                status: "error",
+                message: "Primary scrypt salt and secondary scrypt salt must be different.",
+                tip: "Please don't try bypassing this. Having the same primary and secondary salt completely breaks the security of the system. Instead, generate a random salt for both and try again."
+            });
+            return;
+        }
         // make sure the account exists and that the public key matches
         const query = new hedera.AccountInfoQuery().setAccountId(req.body.accountId);
         const accountInfo = await query.execute(client);
@@ -88,15 +97,6 @@ const createUser = async (req, res, client) => {
                 status: "error",
                 message: "Account ID and public key do not match.",
                 tip: "Make sure the account ID was registered with the public key."
-            });
-            return;
-        }
-        // ensure the salts are different
-        else if (req.body.primaryScryptSalt === req.body.secondaryScryptSalt) {
-            res.status(500).json({
-                status: "error",
-                message: "Primary scrypt salt and secondary scrypt salt must be different.",
-                tip: "Please don't try bypassing this. Having the same primary and secondary salt completely breaks the security of the system. Instead, generate a random salt for both and try again."
             });
             return;
         }

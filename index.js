@@ -16,6 +16,9 @@ const { rateLimit } = require("express-rate-limit");
 
 // controllers
 const createAccount = require("./controllers/hederaCreate");
+const fetchRecord = require("./controllers/fetchRecord");
+const findUser = require("./controllers/findUser");
+const getSalt = require("./controllers/getSalt");
 
 // main function
 async function main() {
@@ -40,6 +43,9 @@ async function main() {
         legacyHeaders: false
     });
     app.post("/hederaCreate", hederaRateLimit, (req, res) => createAccount(req, res, client));
+    app.post("/fetchRecord", fetchRecord);
+    app.post("/findUser", findUser);
+    app.post("/getSalt", getSalt);
     // listen on app
     app.listen(config.port, () => {
         info(`Listening on port ${config.port}.`);

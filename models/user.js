@@ -17,7 +17,7 @@ const schema = new mongoose.Schema({
     privateKey: String,
     primaryScryptSalt: String,
     secondaryScryptSalt: String,
-    address: String
+    accountId: String
 });
 
 const User = mongoose.model("User", schema);
