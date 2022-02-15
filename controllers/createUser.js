@@ -8,7 +8,7 @@
 
 const User = require("../models/user");
 const hedera = require("@hashgraph/sdk");
-const hexRegex = /^[a-f0-9]+$/g;
+const hexRegex = /^[a-f0-9]+$/;
 
 const createUser = async (req, res, client) => {
     try {

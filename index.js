@@ -19,6 +19,7 @@ const createAccount = require("./controllers/hederaCreate");
 const fetchRecord = require("./controllers/fetchRecord");
 const findUser = require("./controllers/findUser");
 const getSalt = require("./controllers/getSalt");
+const createUser = require("./controllers/createUser");
 
 // main function
 async function main() {
@@ -46,6 +47,7 @@ async function main() {
     app.post("/fetchRecord", fetchRecord);
     app.post("/findUser", findUser);
     app.post("/getSalt", getSalt);
+    app.post("/createUser", (req, res) => createUser(req, res, client))
     // listen on app
     app.listen(config.port, () => {
         info(`Listening on port ${config.port}.`);
