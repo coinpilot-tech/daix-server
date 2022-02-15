@@ -12,7 +12,7 @@ const hexRegex = /^[a-f0-9]+$/g;
 
 const createUser = async (req, res, client) => {
     try {
-        // make sure the parameteres are set up correctly
+        // make sure the parameters are set up correctly
         const required = ["username", "secondaryScrypt", "publicKey", "privateKey", "primaryScryptSalt", "secondaryScryptSalt", "accountId"];
         const hexParams = ["secondaryScrypt", "publicKey", "privateKey", "primaryScryptSalt", "secondaryScryptSalt"];
         const scryptParams = ["secondaryScrypt", "primaryScryptSalt", "secondaryScryptSalt"];
