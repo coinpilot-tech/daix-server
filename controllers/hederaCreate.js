@@ -33,6 +33,7 @@ const createAccount = async (req, res, client) => {
         const txn = await new hedera.AccountCreateTransaction()
             .setInitialBalance(0)
             .setKey(hedera.PublicKey.fromString(req.body.publicKey))
+            .setTransactionMemo("made with daix - tech.coinpilot.com")
             .execute(client);
         const receipt = await txn.getReceipt(client);
         // send them their account id
